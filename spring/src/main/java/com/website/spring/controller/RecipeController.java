@@ -12,8 +12,9 @@ public class RecipeController {
     @ResponseBody
     @GetMapping("welcome")
     public String demo(){
-        log.info("demo methot called");
+       // log.info("demo methot called");
         return "hello spring";
     }
 
+    
 }
