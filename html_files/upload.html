@@ -5,6 +5,19 @@
     <title>Upload Recipe</title>
 </head>
 <body>
-<button id="upload" title="Upload Recipe">Upload Recipe</button>
+<form action="page_to_handle_uploading" method="post">
+    <fieldset>
+        <legend>Upload Menu</legend>
+        Please enter the details of the recipe.<br>
+        <textarea name="detail" rows="5" cols="27" required></textarea><br>
+        Tags of the recipe.<br>
+        <input type="text" name="tag" value="" required><br>
+        Photo of ingredients <input type="file" name="ingredients_photo" required><br>
+        <input type="submit" name="submit" value="submit">
+        <input type="reset">
+    </fieldset>
+</form>
+
+<button id="upload" onclick="alert('Successfully uploaded the recipe!')" title="Upload Recipe">Upload Recipe</button>
 </body>
 </html>
