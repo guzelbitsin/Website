@@ -10,12 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class RecipeController {
 
-    @ResponseBody
-    @RequestMapping("/")
-    public String home(){
-        // log.info("demo methot called");
-        return "hello spring";
-    }
+
 
     @ResponseBody
     @GetMapping("welcome")

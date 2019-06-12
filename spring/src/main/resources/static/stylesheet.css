@@ -1,7 +1,13 @@
-body {
-    background-color: darkgray;
+body h1, h2, h3, h4, h5, h6 {
+    /* Responsive text */
+    /* Create a good responsive style sheet! */
+    /* Or using BootStrap */
+    font-size: 10vw;
 }
 
+body p{
+    font-size: 5vw;
+}
 
 
 li{
