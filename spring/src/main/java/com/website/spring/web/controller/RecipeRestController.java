@@ -1,5 +1,6 @@
 package com.website.spring.web.controller;
 
+import com.website.spring.exception.InternalServerException;
 import com.website.spring.exception.RecipeNotFoundException;
 import com.website.spring.model.Recipe;
 import com.website.spring.service.RecipeService;
@@ -27,9 +28,9 @@ public class RecipeRestController {
             recipeService.deleteRecipe(name);
             return ResponseEntity.ok().build();
         }catch(RecipeNotFoundException e){
-            return ResponseEntity.notFound().build();
+            throw e;
         }catch (Exception ex){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            throw new InternalServerException(ex);
         }
     }
 
