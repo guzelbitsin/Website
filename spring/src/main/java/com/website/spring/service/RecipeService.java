@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface RecipeService {
     List<Recipe> findRecipes();
-    List<Recipe> findRecipeName(String name);
+    Recipe findRecipeName(String name);
     List<Recipe> findRecipeTag(String name);
-    Recipe findRecipe(int id) throws RecipeNotFoundException;
+    Recipe findRecipeId(int id) throws RecipeNotFoundException;
     void createRecipe(Recipe recipe);
     void update(Recipe recipe);
-    void deleteRecipe(int id);
+    void deleteRecipe(String name);
 }
