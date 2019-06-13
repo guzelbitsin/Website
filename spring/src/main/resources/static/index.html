@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en-US" xmlns="http://www.w3.org/1999/html" ng-app="RecipeManagementServiceApp">
+<html lang="en-US" xmlns="http://www.w3.org/1999/html" data-ng-app="RecipeManagementServiceApp">
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link href="bootstrap.min.css" rel="stylesheet">
     <meta name="description" content="The web-site of Recipe Management Service">
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="author" content="Alper Kaan YILDIZ">
@@ -11,22 +12,13 @@
 
 <body data-ng-controller="recipeController">
 
+
+
 <script type="text/javascript">
     var app = angular.module("RecipeManagementServiceApp", []);
     app.controller('recipeController', function ($scope){
        $scope.recipes = [
-           {
-               id: 0,
-               description: "a",
-               tag: "b",
-               picture: "c"
-           },
-           {
-               id: 1,
-               description: "b",
-               tag: "c",
-               picture: "d"
-           }
+
        ];
 
        $scope.del = function (id) {
@@ -46,8 +38,30 @@
            $scope.picture = recipe.picture;
 
 
+       };
 
-       }
+       $scope.add = function () {
+           $scope.recipes.push({
+              id: $scope.id,
+              description: $scope.description,
+              tag: $scope.tag,
+              picture: $scope.picture
+           });
+
+           $scope.id = '';
+           $scope.description = '';
+           $scope.tag = '';
+           $scope.picture = '';
+
+       };
+
+       $scope.edit = function () {
+           var index = getSelectedIndex($scope.id);
+           $scope.recipes[index].description = $scope.description;
+           $scope.recipes[index].tag = $scope.tag;
+           $scope.recipes[index].picture = $scope.picture;
+
+       };
 
        function getSelectedIndex(id) {
            for(var i=0; i<$scope.recipes.length; i++)
@@ -59,27 +73,30 @@
     });
 </script>
 
-<table cellpadding="2" cellspacing="2" border="2">
-    <tr>
-        <th>Id</th>
-        <th>Description</th>
-        <th>Tag</th>
-        <th>Picture</th>
-        <th>Operation</th>
-    </tr>
-    <tr data-ng-repeat="recipe in recipes">
-        <td>{{recipe.id}}</td>
-        <td>{{recipe.description}}</td>
-        <td>{{recipe.tag}}</td>
-        <td>{{recipe.picture}}</td>
-        <td><a href="#" data-ng-click="del(recipe.id)">Delete</a></td>
-        <td><a href="#" data-ng-click="selectEdit(recipe.id)">Edit</a></td>
+        <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Tag</th>
+            <th>Picture</th>
+            <th><img src="images/delete.jpeg" alt="logo" width="auto" height="50px">Delete</th>
+            <th><img src="images/edit.jpeg" alt="logo" width="50px" height="50px">Edit</th>
+        </tr>
+        <tr data-ng-repeat="recipe in recipes">
+            <td>{{recipe.id}}</td>
+            <td>{{recipe.description}}</td>
+            <td>{{recipe.tag}}</td>
+            <td>{{recipe.picture}}</td>
+            <td><a href="#" data-ng-click="del(recipe.id)">Delete</a></td>
+            <td><a href="#" data-ng-click="selectEdit(recipe.id)">Edit</a></td>
+        </tr>
+    </table>
 
-    </tr>
-</table>
 
-<h2>Recipe</h2>
-<table cellpadding="2" cellspacing="2">
+
+<div>
+    <h1 style="text-align: center">Recipe</h1></div>
+<table border="2" align="center">
     <tr>
         <td>Id</td>
         <td><input type="text" data-ng-model="id"></td>
