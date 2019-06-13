@@ -1,61 +1,113 @@
 <!DOCTYPE html>
-<html lang="en-US" xmlns="http://www.w3.org/1999/html">
+<html lang="en-US" xmlns="http://www.w3.org/1999/html" ng-app="RecipeManagementServiceApp">
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="description" content="The web-site of Recipe Management Service">
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="author" content="Alper Kaan YILDIZ">
-    <meta name="viewport" content="width=device-width, initial-scale=1.5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Management Service</title>
-    <style>
-        * {box-sizing: border-box}
-        body {font-family: Arial, Helvetica, sans-serif;}
-
-        .navbar {
-            width: 100%;
-            background-color: #555;
-            overflow: auto;
-        }
-
-        .navbar a {
-            float: left;
-            padding: 12px;
-            color: white;
-            text-decoration: none;
-            font-size: 17px;
-            width: 25%; /* Four links of equal widths */
-            text-align: center;
-        }
-
-        .navbar a:hover {
-            background-color: #000;
-        }
-
-        .navbar a.active {
-            background-color: #4CAF50;
-        }
-
-        @media screen and (max-width: 500px) {
-            .navbar a {
-                float: none;
-                display: block;
-                width: 100%;
-                text-align: left;
-            }
-        }
-    </style>
 </head>
-<body>
 
-<noscript>Your browser does not support JavaScript!</noscript>
+<body data-ng-controller="recipeController">
 
-<div class="navbar">
-    <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
-    <a href=upload.html#"><i class="fa fa-fw fa-search"></i>Upload</a>
-    <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-    <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
-</div>
+<script type="text/javascript">
+    var app = angular.module("RecipeManagementServiceApp", []);
+    app.controller('recipeController', function ($scope){
+       $scope.recipes = [
+           {
+               id: 0,
+               description: "a",
+               tag: "b",
+               picture: "c"
+           },
+           {
+               id: 1,
+               description: "b",
+               tag: "c",
+               picture: "d"
+           }
+       ];
 
+       $scope.del = function (id) {
+           var confirmation = confirm("Delete recipe?");
+           if(confirmation) {
+               var index = getSelectedIndex(id);
+               $scope.recipes.splice(index, 1);
+           }
+       };
+
+       $scope.selectEdit = function (id) {
+           var index = getSelectedIndex(id);
+           var recipe = $scope.recipes[index];
+           $scope.id = recipe.id;
+           $scope.description = recipe.description;
+           $scope.tag = recipe.tag;
+           $scope.picture = recipe.picture;
+
+
+
+       }
+
+       function getSelectedIndex(id) {
+           for(var i=0; i<$scope.recipes.length; i++)
+               if($scope.recipes[i].id == id)
+                   return i;
+               return -1;
+       }
+
+    });
+</script>
+
+<table cellpadding="2" cellspacing="2" border="2">
+    <tr>
+        <th>Id</th>
+        <th>Description</th>
+        <th>Tag</th>
+        <th>Picture</th>
+        <th>Operation</th>
+    </tr>
+    <tr data-ng-repeat="recipe in recipes">
+        <td>{{recipe.id}}</td>
+        <td>{{recipe.description}}</td>
+        <td>{{recipe.tag}}</td>
+        <td>{{recipe.picture}}</td>
+        <td><a href="#" data-ng-click="del(recipe.id)">Delete</a></td>
+        <td><a href="#" data-ng-click="selectEdit(recipe.id)">Edit</a></td>
+
+    </tr>
+</table>
+
+<h2>Recipe</h2>
+<table cellpadding="2" cellspacing="2">
+    <tr>
+        <td>Id</td>
+        <td><input type="text" data-ng-model="id"></td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td><input type="text" data-ng-model="description"></td>
+    </tr>
+    <tr>
+        <td>Tag</td>
+        <td><input type="text" data-ng-model="tag"></td>
+    </tr>
+    <tr>
+        <td>Picture</td>
+        <td><input type="text" data-ng-model="picture"></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>
+            <input type="button" value="Add" data-ng-click="add()">
+            <input type="button" value="Save" data-ng-click="edit()">
+        </td>
+
+    </tr>
+</table>
 </body>
-</html>
+
+
+
+
+
