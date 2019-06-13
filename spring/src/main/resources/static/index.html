@@ -1,21 +1,61 @@
 <!DOCTYPE html>
 <html lang="en-US" xmlns="http://www.w3.org/1999/html">
 <head>
-    <link rel="stylesheet" href="stylesheet.css">
-    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="description" content="The web-site of Recipe Management Service">
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="author" content="Alper Kaan YILDIZ">
     <meta name="viewport" content="width=device-width, initial-scale=1.5">
     <title>Recipe Management Service</title>
+    <style>
+        * {box-sizing: border-box}
+        body {font-family: Arial, Helvetica, sans-serif;}
+
+        .navbar {
+            width: 100%;
+            background-color: #555;
+            overflow: auto;
+        }
+
+        .navbar a {
+            float: left;
+            padding: 12px;
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+            width: 25%; /* Four links of equal widths */
+            text-align: center;
+        }
+
+        .navbar a:hover {
+            background-color: #000;
+        }
+
+        .navbar a.active {
+            background-color: #4CAF50;
+        }
+
+        @media screen and (max-width: 500px) {
+            .navbar a {
+                float: none;
+                display: block;
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
 </head>
 <body>
+
 <noscript>Your browser does not support JavaScript!</noscript>
-<ul id="list1">
-    <li> <a href="Homepage.html">Home</a></li>
-    <li> <a href="upload.html">Upload Recipe</a></li>
-    <li> <a href="page3.html">page3.html</a></li>
-</ul>
+
+<div class="navbar">
+    <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+    <a href=upload.html#"><i class="fa fa-fw fa-search"></i>Upload</a>
+    <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+    <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+</div>
 
 </body>
 </html>
