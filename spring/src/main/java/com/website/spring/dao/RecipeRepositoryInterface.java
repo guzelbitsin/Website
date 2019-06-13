@@ -11,5 +11,5 @@ public interface RecipeRepositoryInterface {
     Recipe findByName(String name);
     void create(Recipe recipe);
     Recipe update(Recipe recipe);
-    void delete(int id);
+    void delete(String name);
 }

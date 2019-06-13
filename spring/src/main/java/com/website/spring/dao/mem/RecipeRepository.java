@@ -17,18 +17,25 @@ public class RecipeRepository implements RecipeRepositoryInterface {
     public RecipeRepository(){
 
         Recipe recipe1 = new Recipe();
+        recipe1.setId(0);
+        recipe1.setName("ilkyemek");
+        recipe1.setTag("iskender");
+        recipe1.setDescription("yogurtlu iskender, tereyagli");
+
+        Recipe recipe3 = new Recipe();
         recipe1.setId(1);
-        recipe1.setName("ilk yemek");
+        recipe1.setName("ilkyemek");
         recipe1.setTag("iskender");
         recipe1.setDescription("yogurtlu iskender, tereyagli");
 
         Recipe recipe2 = new Recipe();
         recipe1.setId(2);
-        recipe1.setName("ikinci yemek");
+        recipe1.setName("ikinciyemek");
         recipe1.setTag("doner");
         recipe1.setDescription("tereyagli,et");
 
         recipeMap.put(recipe1.getId(),recipe1);
+        recipeMap.put(recipe3.getId(),recipe3);
         recipeMap.put(recipe2.getId(),recipe2);
     }
 
@@ -48,13 +55,12 @@ public class RecipeRepository implements RecipeRepositoryInterface {
     }
 
     @Override
-    public Recipe findByName(String name) {
-        return null;
+    public Recipe findByName(String name) { return recipeMap.get(2);
     }
 
     @Override
     public void create(Recipe recipe) {
-        recipe.setId(1212);
+        recipe.setId(2123);
         recipeMap.put(recipe.getId(),recipe);
     }
 
@@ -65,7 +71,7 @@ public class RecipeRepository implements RecipeRepositoryInterface {
     }
 
     @Override
-    public void delete(int id) {
-        recipeMap.remove(id);
+    public void delete(String name) {
+        recipeMap.remove(name);
     }
 }

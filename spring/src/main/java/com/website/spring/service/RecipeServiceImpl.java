@@ -24,8 +24,7 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public List<Recipe> findRecipeName(String name) {
-        return (List<Recipe>) recipeRepository.findByName(name);
+    public Recipe findRecipeName(String name) { return recipeRepository.findByName(name);
     }
 
     @Override
@@ -34,7 +33,7 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public Recipe findRecipe(int id) throws RecipeNotFoundException {
+    public Recipe findRecipeId(int id) throws RecipeNotFoundException {
         Recipe recipe = recipeRepository.findById(id);
         if(recipe == null) throw new RecipeNotFoundException("Recipe not found");
         return null;
@@ -52,8 +51,7 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public void deleteRecipe(int id) {
-        recipeRepository.delete(id);
+    public void deleteRecipe(String name) { recipeRepository.delete(name);
     }
 
 
