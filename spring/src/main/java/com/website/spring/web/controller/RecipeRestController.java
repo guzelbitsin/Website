@@ -16,13 +16,12 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/rest")
 public class RecipeRestController {
 
     @Autowired
     private RecipeService recipeService;
 
-    @RequestMapping(method = RequestMethod.DELETE,value = "/recipe/{name}")
+    @RequestMapping(method = RequestMethod.DELETE,value = "/deleteRecipe/{name}")
     public ResponseEntity<?> deleteRecipe(@PathVariable("name") String name){
         try {
             recipeService.deleteRecipe(name);
@@ -35,13 +34,13 @@ public class RecipeRestController {
     }
 
 
-    @RequestMapping(method= RequestMethod.GET, value = "/recipes")
+    @RequestMapping(method= RequestMethod.GET, value = "/findAllRecipes")
     public ResponseEntity<List<Recipe>> getRecipes(){
         List<Recipe> recipes = recipeService.findRecipes();
         return ResponseEntity.ok(recipes);
     }
 
-    @RequestMapping(method = RequestMethod.PUT,value = "/recipe/{name}")
+    @RequestMapping(method = RequestMethod.PUT,value = "/updateRecipe/{name}")
     public ResponseEntity<Recipe> updateRecipe(@PathVariable String name, @RequestBody Recipe recipeRequest){
         try{
             Recipe recipe = recipeService.findRecipeName(name);
@@ -59,7 +58,7 @@ public class RecipeRestController {
         }
 
     }
-    @RequestMapping(method = RequestMethod.POST,value = "recipe")
+    @RequestMapping(method = RequestMethod.POST,value = "/addRecipe")
     public ResponseEntity<URI> createRecipe(@RequestBody Recipe recipe){
         try {
             recipeService.createRecipe(recipe);
@@ -71,13 +70,13 @@ public class RecipeRestController {
         }
     }
     //tag
-    @RequestMapping(method=RequestMethod.GET,value = "/recipe")
+    @RequestMapping(method=RequestMethod.GET,value = "/getRecipeTag")
     public ResponseEntity<List<Recipe>> getRecipes(@RequestParam("tag") String name){
         List<Recipe> recipes = recipeService.findRecipeTag(name);
         return ResponseEntity.ok(recipes);
     }
     //name
-    @RequestMapping(method = RequestMethod.GET,value = "/recipe/{name}")
+    @RequestMapping(method = RequestMethod.GET,value = "/findAllRecipes/{name}")
     public ResponseEntity<Recipe> getRecipe(@PathVariable("name") String name)
     {
         try {
