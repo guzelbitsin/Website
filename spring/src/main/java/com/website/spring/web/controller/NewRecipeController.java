@@ -5,5 +5,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class NewRecipeController {
 
-    public String newOwner()
+    public String newOwner(){
+        return "";
+    }
 }
