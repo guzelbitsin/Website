@@ -1,18 +1,33 @@
 package com.website.spring.model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Data
+
 @Setter
 @Getter
+@ToString
+
+@Document(collection = "Recipe")
 public class Recipe {
 
-    private int id;
+
+    private long id;
+
+    @Id
     private String name;
     private String description;
     private String tag;
     private String image;
 
+    public Recipe(String name,String description,String tag,String image){
+
+        this.name=name;
+        this.tag=tag;
+        this.image=image;
+        this.description=description;
+    }
 }

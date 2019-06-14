@@ -1,17 +1,8 @@
 package com.website.spring.dao.mem;
 
-import com.website.spring.dao.RecipeRepositoryInterface;
-import com.website.spring.model.Recipe;
-import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-@Repository
-public class RecipeRepository implements RecipeRepositoryInterface {
-
+public class RecipeRepository {
+/*
     private Map<Integer,Recipe> recipeMap = new HashMap<>();
 
     public RecipeRepository(){
@@ -73,5 +64,5 @@ public class RecipeRepository implements RecipeRepositoryInterface {
     @Override
     public void delete(String name) {
         recipeMap.remove(name);
-    }
+    }*/
 }
