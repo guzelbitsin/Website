@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-US" xmlns="http://www.w3.org/1999/html" data-ng-app="RecipeManagementServiceApp">
 <head>
+    <style>
+        a:hover{
+            background-color: yellow;
+        }
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <link href="bootstrap.min.css" rel="stylesheet">
     <meta name="description" content="The web-site of Recipe Management Service">
@@ -18,7 +23,12 @@
     var app = angular.module("RecipeManagementServiceApp", []);
     app.controller('recipeController', function ($scope){
        $scope.recipes = [
-
+           {
+               id: 0,
+               description: "asfaf",
+               tag: "asgagasgasg",
+               picture: "images/delete.jpeg"
+           }
        ];
 
        $scope.del = function (id) {
@@ -73,82 +83,67 @@
     });
 </script>
 
-       <!-- <table border="1">
-        <tr>
-            <th>Id</th>
-            <th>Description</th>
-            <th>Tag</th>
-            <th>Picture</th>
-            <th><img src="images/delete.jpeg" alt="logo" width="auto" height="50px">Delete</th>
-            <th><img src="images/edit.jpeg" alt="logo" width="50px" height="50px">Edit</th>
-        </tr>
-        <tr data-ng-repeat="recipe in recipes">
-            <td>{{recipe.id}}</td>
-            <td>{{recipe.description}}</td>
-            <td>{{recipe.tag}}</td>
-            <td>{{recipe.picture}}</td>
-            <td><a href="#" data-ng-click="del(recipe.id)">Delete</a></td>
-            <td><a href="#" data-ng-click="selectEdit(recipe.id)">Edit</a></td>
-        </tr>
-    </table> -->
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Description</th>
-                    <th>Tag</th>
-                    <th>Picture</th>
-                    <th><img src="images/delete.jpeg" alt="logo" width="auto" height="50px">Delete</th>
-                    <th><img src="images/edit.jpeg" alt="logo" width="50px" height="50px">Edit</th>
-                </tr>
-                </thead>
-                <tbody data-ng-repeat="recipe in recipes">
+            <div class="row">
+                <div class="col-md-8">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Description</th>
+                            <th>Tag</th>
+                            <th style="width: 40%">Picture</th>
+                            <th><img src="images/delete.jpeg" alt="logo" width="auto" height="50px">Delete</th>
+                            <th><img src="images/edit.jpeg" alt="logo" width="50px" height="50px">Edit</th>
+                        </tr>
+                        </thead>
+                        <tbody data-ng-repeat="recipe in recipes">
+                        <tr>
+                            <td class="table-warning">{{recipe.id}}</td>
+                            <td class="table-active">{{recipe.description}}</td>
+                            <td class="table-success">{{recipe.tag}}</td>
+                            <td class="table-danger img-fluid"><img data-ng-src="{{recipe.picture}}" style="width: 40%" alt="Recipe Picture"></td>
+                            <td><a href="#" class="btn btn-danger active" data-ng-click="del(recipe.id)">Delete</a></td>
+                            <td><a href="#" class="btn btn-success active"data-ng-click="selectEdit(recipe.id)">Edit</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <h1>Recipe Edit Menu</h1>
+                <table>
                     <tr>
-                        <td class="table-warning">{{recipe.id}}</td>
-                        <td class="table-active">{{recipe.description}}</td>
-                        <td class="table-success">{{recipe.tag}}</td>
-                        <td class="table-danger">{{recipe.picture}}</td>
+                        <td>Id</td>
+                        <td><input type="text" data-ng-model="id"></td>
                     </tr>
-                </tbody>
-            </table>
+                    <tr>
+                        <td>Description</td>
+                        <td><input type="text" data-ng-model="description"></td>
+                    </tr>
+                    <tr>
+                        <td>Tag</td>
+                        <td><input type="text" data-ng-model="tag"></td>
+                    </tr>
+                    <tr>
+                        <td>Picture</td>
+                        <td><input type="file" data-ng-model="picture"></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>
+                            <input type="button" value="Add" data-ng-click="add()">
+                            <input type="button" value="Save" data-ng-click="edit()">
+                        </td>
+
+                    </tr>
+                </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-
-
-<div>
-    <h1 style="text-align: center">Recipe</h1></div>
-<table border="2" align="center">
-    <tr>
-        <td>Id</td>
-        <td><input type="text" data-ng-model="id"></td>
-    </tr>
-    <tr>
-        <td>Description</td>
-        <td><input type="text" data-ng-model="description"></td>
-    </tr>
-    <tr>
-        <td>Tag</td>
-        <td><input type="text" data-ng-model="tag"></td>
-    </tr>
-    <tr>
-        <td>Picture</td>
-        <td><input type="text" data-ng-model="picture"></td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-        <td>
-            <input type="button" value="Add" data-ng-click="add()">
-            <input type="button" value="Save" data-ng-click="edit()">
-        </td>
-
-    </tr>
-</table>
 </body>
 
 
