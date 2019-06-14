@@ -73,7 +73,7 @@
     });
 </script>
 
-        <table border="1">
+       <!-- <table border="1">
         <tr>
             <th>Id</th>
             <th>Description</th>
@@ -90,7 +90,34 @@
             <td><a href="#" data-ng-click="del(recipe.id)">Delete</a></td>
             <td><a href="#" data-ng-click="selectEdit(recipe.id)">Edit</a></td>
         </tr>
-    </table>
+    </table> -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Description</th>
+                    <th>Tag</th>
+                    <th>Picture</th>
+                    <th><img src="images/delete.jpeg" alt="logo" width="auto" height="50px">Delete</th>
+                    <th><img src="images/edit.jpeg" alt="logo" width="50px" height="50px">Edit</th>
+                </tr>
+                </thead>
+                <tbody data-ng-repeat="recipe in recipes">
+                    <tr>
+                        <td class="table-warning">{{recipe.id}}</td>
+                        <td class="table-active">{{recipe.description}}</td>
+                        <td class="table-success">{{recipe.tag}}</td>
+                        <td class="table-danger">{{recipe.picture}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 
 
