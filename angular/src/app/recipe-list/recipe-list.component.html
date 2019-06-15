@@ -1,0 +1,22 @@
+<table class="table table-sm">
+  <thead>
+    <th>Description</th>
+    <th>Tag</th>
+    <th>Picture</th>
+    <th></th>
+  </thead>
+  <ng-container *ngFor="let recipe of recipeArray">
+    <tr class="table-dark">
+      <td>{{recipe.description}}</td>
+        <td>{{recipe.tag}}</td>
+        <td>{{recipe.picture}}</td>
+        <td>
+          <button class="btn btn-outline-info" (click)="recipeService.populateForm(recipe)">Edit recipe</button>
+          <button class="btn btn-outline-warning" (click)="onDelete(recipe.$key)">Delete recipe</button>
+        </td>
+    </tr>
+  </ng-container>
+</table>
+<div class="alert alert-danger" *ngIf="showDeletedMessage">
+  Recipe deleted!
+</div>
