@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="RMSLogo" />
+  <img src="logo.png" alt="RMSLogo" width="125" height="125"/>
 </p>
 
 # Website
