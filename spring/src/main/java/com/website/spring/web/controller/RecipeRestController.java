@@ -69,14 +69,14 @@ public class RecipeRestController {
         }
     }
     //tag
-    @RequestMapping(method=RequestMethod.GET,value = "/getRecipeTag")
-    public ResponseEntity<List<Recipe>> getRecipes(@RequestParam("tag") String name){
+    @RequestMapping(method=RequestMethod.GET,value = "/findRecipeTag/{tag}")
+    public ResponseEntity<List<Recipe>> getRecipes(@PathVariable("tag") String name){
         List<Recipe> recipes = recipeServiceImpl.findRecipeTag(name);
         return ResponseEntity.ok(recipes);
     }
 
-    //Duzenlenecek burasi !!!
-    @RequestMapping(method = RequestMethod.GET,value = "/findAllRecipes/{name}")
+
+    @RequestMapping(method = RequestMethod.GET,value = "/findRecipe/{name}")
     public ResponseEntity<Recipe> getRecipe(@PathVariable("name") String name)
     {
         try {

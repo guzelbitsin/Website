@@ -22,13 +22,24 @@ public class RecipeServiceImpl{
     }
 
     public List<Recipe> findRecipeTag(String name) {
-
-        return (List<Recipe>) recipeRepository.findByTag(name);
+        List<Recipe> recipeList = new ArrayList<>();
+        for(Recipe e : recipeRepository.findAll()){
+            if(e.getTag().equalsIgnoreCase(name))
+                recipeList.add(e);
+        }
+        return recipeList;
     }
 
 
     public void createRecipe(String name,String description,String image,String tag) {
-            recipeRepository.save(new Recipe(name, description, tag, image));
+        boolean flag=false;
+        for(Recipe e:recipeRepository.findAll()){
+            if(e.getName().equalsIgnoreCase(name))
+                flag = true;
+        }
+        if(flag==false)
+            recipeRepository.insert(new Recipe(name, description, tag, image));
+        //recipeRepository.save(new Recipe(name, description, tag, image));
     }
 
 

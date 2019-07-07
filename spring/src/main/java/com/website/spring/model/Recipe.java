@@ -24,7 +24,7 @@ public class Recipe {
     private String image;
 
     public Recipe(String name,String description,String tag,String image){
-
+        this.id = (int) (new Date().getTime()/1000);
         this.name=name;
         this.tag=tag;
         this.image=image;
