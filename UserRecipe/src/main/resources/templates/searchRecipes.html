@@ -18,14 +18,16 @@ http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <p><strong th:text="${entry.key} + ': ' + ${recipeList.size()}"></strong></p>
     <table>
         <tr>
-            <th>Item code</th>
-            <th>Item type</th>
+            <th>Recipe name</th>
+            <th>Recipe description</th>
+            <th>Recipe tag</th>
+            <th>Recipe image</th>
         </tr>
         <tr th:each="recipe : ${recipes}">
             <td><a th:href="@{/recipes/} + ${recipe.id}" th:text="${recipe.name}">RecipeName</a></td>
-            <td th:text="${recipe.description}">Item type</td>
-            <td th:text="${recipe.tag}">Item type</td>
-            <td th:text="${recipe.image}">Item type</td>
+            <td th:text="${recipe.description}">Recipe Description</td>
+            <td th:text="${recipe.tag}">Recipe Tag</td>
+            <td th:text="${recipe.image}">Recipe Image</td>
         </tr>
     </table>
 </div>
