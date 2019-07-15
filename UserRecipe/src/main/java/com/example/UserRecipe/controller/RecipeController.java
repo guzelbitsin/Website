@@ -87,7 +87,7 @@ public class RecipeController {
         return "redirect:/recipes";
     }
 
-    @GetMapping("/recipes/searchh")
+    @GetMapping("/recipes/search")
     public String getProduct(Model model,
                              @ModelAttribute("myFormObject") RecipeSearchForm myFormObject,
                              BindingResult result) {
