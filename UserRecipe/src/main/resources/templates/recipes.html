@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="
+http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="
+http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Items</title>
+</head>
+<body>
+<nav role="navigation">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/recipes/add">Add recipe</a></li>
+    </ul>
+</nav>
+<table>
+    <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Tag</th>
+        <th>Image</th>
+    </tr>
+    <tr th:each="recipe : ${recipes}">
+        <td>
+            <form th:action="@{/recipes/} + ${recipe.id}" th:method="delete">
+                <button type="submit">Delete</button>
+            </form>
+            <form th:action="@{/recipes/edit/} + ${recipe.id}" th:method="get">
+                <button type="submit">Update</button>
+            </form>
+        </td>
+        <td><a th:href="@{/recipes/} + ${recipe.id}" th:text="${recipe.name}">RecipeName</a></td>
+
+        <td th:text="${recipe.description}">Item type will appear here</td>
+        <td th:text="${recipe.tag}">Item type will appear here</td>
+        <td th:text="${recipe.image}">Item type will appear here</td>
+        <td>
+            <form th:action="@{/recipes/} + ${recipe.id}" th:method="put">
+                <select th:field="*{assignForm.username}">
+                    <option th:each="username : ${usernames}"
+                            th:value="${username}"
+                            th:text="${username}">Username will appear here
+                    </option>
+                </select>
+                <button type="submit">Assign</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
