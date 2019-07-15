@@ -1,2 +1,2 @@
 # springcrud
-https://guzelbitsinweb.herokuapp.com/
+https://guzelbitsin.herokuapp.com/
