@@ -3,6 +3,8 @@
 http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="
 http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <head>
     <title>Recipes</title>
 </head>
@@ -14,19 +16,19 @@ http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
         <li><a href="/register">Register</a></li>
     </ul>
 </nav>
-<table>
+<table class="table">
     <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Tag</th>
-        <th>Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Tag</th>
+        <th scope="col">Image</th>
     </tr>
     <tr th:each="recipe : ${recipes}">
-        <td th:text="${recipe.name}">Name</td>
-        <td th:text="${recipe.description}">Description</td>
-        <td th:text="${recipe.tag}">Tag</td>
+        <td th:text="${recipe.name}"></td>
+        <td th:text="${recipe.description}"></td>
+        <td th:text="${recipe.tag}"></td>
         <img th:src="${recipe.image}"/>
-        <td th:text="${recipe.image}">Image</td>
+        <td th:text="${recipe.image}"></td>
     </tr>
 </table>
 </body>

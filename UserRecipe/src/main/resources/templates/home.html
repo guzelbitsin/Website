@@ -1,18 +1,38 @@
 <!DOCTYPE html>
-<html xmlns="
-http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en">
 <head>
-    <title>Inventory Home</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Home Page of RMS</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+    .bs-example{
+        margin: 20px;
+    }
+</style>
 </head>
 <body>
-<nav role="navigation">
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/users">Users</a></li>
-        <li><a href="/recipes">Recipes</a></li>
-    </ul>
-</nav>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a href="#" class="navbar-brand">Recipe Management Service</a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<h1>Recipe Management Service</h1>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="/" class="nav-item nav-link active">Home</a>
+                <a href="/users" class="nav-item nav-link">Users</a>
+                <a href="/recipes" class="nav-item nav-link">Recipes</a>
+            </div>
+            <form class="form-inline ml-auto">
+                <input type="text" class="form-control mr-sm-2" placeholder="Type recipe tag here...">
+                <button type="submit" class="btn btn-outline-light">Search</button>
+            </form>
+        </div>
+    </nav>
 </body>
-</html>
+</html>                            
