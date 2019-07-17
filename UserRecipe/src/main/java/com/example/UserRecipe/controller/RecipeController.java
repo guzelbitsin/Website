@@ -27,12 +27,12 @@ public class RecipeController {
         this.userService = userService;
     }
     @RequestMapping("/recipes/add")
-    public ModelAndView itemAddPage() {
+    public ModelAndView recipeAddPage() {
         return new ModelAndView("addRecipe", "recipeForm", new RecipeAddForm());
     }
 
     @RequestMapping(value = "/recipes", method = RequestMethod.POST)
-    public String handleItemAdd(
+    public String handleRecipeAdd(
             @Valid @ModelAttribute("recipeForm")  RecipeAddForm form, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "addRecipe";
@@ -59,13 +59,13 @@ public class RecipeController {
         return new ModelAndView("recipePage" ,"recipes", recipeService.getRecipeById(id));
     }
     @RequestMapping(value = "/recipes/{id}", method = RequestMethod.PUT)
-    public String handleItemAssign(@ModelAttribute("user") RecipeAssignForm form, @PathVariable("id") long id) {
+    public String handleRecipeAssign(@ModelAttribute("user") RecipeAssignForm form, @PathVariable("id") long id) {
         recipeService.assignRecipe(form.getUsername(), id);
         return "redirect:/recipes";
     }
 
     @RequestMapping(value = "/recipes/edit/{id}", method = RequestMethod.GET)
-    public ModelAndView handleItemUpdate(@ModelAttribute("recipe") RecipeUpdateForm form, @PathVariable long id) {
+    public ModelAndView handleRecipeUpdate(@ModelAttribute("recipe") RecipeUpdateForm form, @PathVariable long id) {
         RecipeUpdateForm bufForm = new RecipeUpdateForm();
         Recipe rp = recipeService.getRecipeById(id);
         bufForm.setId(id);
@@ -78,7 +78,7 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/recipes/edit/{id}", method = RequestMethod.POST)
-    public String handleItemUpdate(
+    public String handleRecipeUpdate(
             @Valid @ModelAttribute("recipeForm2")  RecipeUpdateForm form, BindingResult bindingResult,@PathVariable Long id) {
         if (bindingResult.hasErrors())
             return "updateRecipe";
@@ -95,6 +95,7 @@ public class RecipeController {
         model.addAttribute("recipes", list);
         return "recipes";
     }
+
 
     //rest methods
     @RequestMapping(method = RequestMethod.GET, value = "/rest/recipes")
@@ -143,6 +144,13 @@ public class RecipeController {
     public ResponseEntity<Iterable<Recipe>> searchRecipesRest(@PathVariable String name) {
         Iterable<Recipe> rp =recipeService.findByNames(name);
         return ResponseEntity.ok(rp);
+    }
+
+    @RequestMapping(value = "/rest/recipes/assign/{id}", method = RequestMethod.PUT)
+    @ResponseBody
+    public ResponseEntity<User> handleRecipeAssign(@RequestBody User user, @PathVariable("id") long id) {
+        recipeService.assignRecipe(user.getUsername(), id);
+        return ResponseEntity.ok(user);
     }
 
 

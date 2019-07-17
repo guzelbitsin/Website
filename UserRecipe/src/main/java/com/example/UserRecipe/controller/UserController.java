@@ -47,6 +47,7 @@ public class UserController {
             return new ModelAndView("userItems" ,"recipes", userService.numberOfRecipesByName(id));
     }
 
+    //rest method
     @RequestMapping(value = "/rest/user/{id}",method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<User> getUserRest(@PathVariable Long id) {
@@ -56,9 +57,16 @@ public class UserController {
 
     @RequestMapping(value = "/rest/users",method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<Iterable<User>> getUsersRest(@PathVariable Long id) {
+    public ResponseEntity<Iterable<User>> getUsersRest() {
         Iterable<User> userList = userService.getUsers();
         return ResponseEntity.ok(userList);
+    }
+
+    @RequestMapping(value = "/rest/users/register",method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<User> addUsersRest(@RequestBody User user) {
+        userService.addUser(user);
+        return ResponseEntity.ok(user);
     }
 
 }
