@@ -100,13 +100,15 @@ public class RecipeController {
     //rest methods
     @RequestMapping(method = RequestMethod.GET, value = "/rest/recipes")
     @ResponseBody
-    public ResponseEntity<Set<Recipe>> getRecipesRest() {
+    public ResponseEntity<Map<String,Set>> getRecipesRest() {
         Iterable<Recipe> owners = recipeService.getAllRecipes();
         Set<Recipe> newSet = new HashSet<>();
         for(Recipe e : owners)
             newSet.add(e);
 
-        return ResponseEntity.ok(newSet);
+        Map<String,Set> map = new HashMap<>();
+        map.put("recipes",newSet);
+        return ResponseEntity.ok(map);
     }
     @RequestMapping(method = RequestMethod.POST, value = "/rest/recipes/add",consumes = "application/json")
     @ResponseBody
