@@ -23,6 +23,12 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
+            <form action="/recipesSearch" class="form-inline">
+            <div class="form-group mb-2">
+                <input type="text" class="form-control" name="tag" placeholder="Search a tag...">
+                <input type="submit" value="Search tag" class="btn btn-success">
+            </div>
+        </form>
             <div class="navbar-nav">
                 <a href="/" class="nav-item nav-link active">Home</a>
                 <a href="/users" class="nav-item nav-link">Users</a>

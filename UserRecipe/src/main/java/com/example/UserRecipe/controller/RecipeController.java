@@ -26,10 +26,17 @@ public class RecipeController {
         this.recipeService = recipeService;
         this.userService = userService;
     }
+
+    @GetMapping("/recipesSearch")
+    public String listRecipes(Model model, @RequestParam(defaultValue = "") String tag){
+        model.addAttribute("recipesSearch", recipeService.findByTag(tag));
+        return "recipesTag";
+    }
     @RequestMapping("/recipes/add")
     public ModelAndView recipeAddPage() {
         return new ModelAndView("addRecipe", "recipeForm", new RecipeAddForm());
     }
+
 
     @RequestMapping(value = "/recipes", method = RequestMethod.POST)
     public String handleRecipeAdd(

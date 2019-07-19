@@ -1,5 +1,7 @@
 package com.example.UserRecipe.service;
 
+import java.util.List;
+
 import com.example.UserRecipe.domain.Recipe;
 import com.example.UserRecipe.domain.RecipeAddForm;
 import com.example.UserRecipe.domain.RecipeUpdateForm;
@@ -13,4 +15,5 @@ public interface RecipeService {
     Recipe getRecipeById(long id);
     Recipe assignRecipe(String username, long recipeId);
     Iterable<Recipe> findByNames(String name);
+    List<Recipe> findByTag(String tag);
 }
