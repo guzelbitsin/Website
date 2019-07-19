@@ -7,7 +7,6 @@ public class RecipeAddForm {
 
     @Size(min = 2, max = 250)
     private String recipeDesc;
-
     @Size(min = 2, max = 250)
     private String recipeName;
     @Size(min = 2, max = 250)

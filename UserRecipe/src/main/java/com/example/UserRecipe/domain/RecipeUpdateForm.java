@@ -5,9 +5,9 @@ import javax.validation.constraints.Size;
 public class RecipeUpdateForm {
 
     private long id;
+
     @Size(min = 2, max = 250)
     private String recipeDesc;
-
     @Size(min = 2, max = 250)
     private String recipeName;
     @Size(min = 2, max = 250)
