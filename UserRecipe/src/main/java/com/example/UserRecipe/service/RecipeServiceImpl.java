@@ -8,6 +8,7 @@ import com.example.UserRecipe.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -26,6 +27,9 @@ public class RecipeServiceImpl implements RecipeService{
 
     @Override
     public Iterable<Recipe> findByNames(String name) { return recipeRepository.findByName(name); }
+
+    @Override
+    public List<Recipe> findByTag(String tag) { return recipeRepository.findByTag(tag); }
 
     @Override
     public Iterable<Recipe> getAllRecipes() {
@@ -71,6 +75,4 @@ public class RecipeServiceImpl implements RecipeService{
         recipe.setUser(user);
         return recipeRepository.save(recipe);
     }
-
-
 }
