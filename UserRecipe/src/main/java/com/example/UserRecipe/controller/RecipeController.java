@@ -4,7 +4,6 @@ import com.example.UserRecipe.domain.*;
 import com.example.UserRecipe.service.RecipeService;
 import com.example.UserRecipe.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,9 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 @Controller
 public class RecipeController {
@@ -103,7 +100,7 @@ public class RecipeController {
         return "recipes";
     }
 
-
+/*
     //rest methods
     @RequestMapping(method = RequestMethod.GET, value = "/rest/recipes")
     @ResponseBody
@@ -161,6 +158,6 @@ public class RecipeController {
         recipeService.assignRecipe(user.getUsername(), id);
         return ResponseEntity.ok(user);
     }
-
+*/
 
 }
