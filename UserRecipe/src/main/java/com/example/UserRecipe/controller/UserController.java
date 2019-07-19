@@ -48,7 +48,7 @@ public class UserController {
     }
 
     //rest method
-    @RequestMapping(value = "/rest/user/{id}",method = RequestMethod.GET)
+    /*@RequestMapping(value = "/rest/user/{id}",method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<User> getUserRest(@PathVariable Long id) {
         User usr = userService.getUserById(id);
@@ -67,6 +67,6 @@ public class UserController {
     public ResponseEntity<User> addUsersRest(@RequestBody User user) {
         userService.addUser(user);
         return ResponseEntity.ok(user);
-    }
+    }*/
 
 }
