@@ -24,7 +24,7 @@ public class RecipeController {
         this.userService = userService;
     }
 
-    @GetMapping("/recipesSearch")
+    @RequestMapping(value = "/recipesSearch", method = RequestMethod.GET)
     public String listRecipes(Model model, @RequestParam(defaultValue = "") String tag){
         model.addAttribute("recipesSearch", recipeService.findByTag(tag));
         return "recipesTag";
@@ -83,7 +83,7 @@ public class RecipeController {
 
     @RequestMapping(value = "/recipes/edit/{id}", method = RequestMethod.POST)
     public String handleRecipeUpdate(
-            @Valid @ModelAttribute("recipeForm2")  RecipeUpdateForm form, BindingResult bindingResult,@PathVariable Long id) {
+            @Valid @ModelAttribute("recipeForm2")  RecipeUpdateForm form, BindingResult bindingResult,@PathVariable long id) {
         if (bindingResult.hasErrors())
             return "updateRecipe";
 
