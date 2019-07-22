@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html xmlns="
-http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="
+http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="
 http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
 <head>
     <title>User</title>
 </head>
-<body>
-<nav role="navigation">
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/users">Users</a></li>
-    </ul>
-</nav>
 
-<div th:each="entry : ${recipes}" th:with="recipeList=${entry.value}">
-    <p><strong th:text="${entry.key} + ': ' + ${recipeList.size()}"></strong></p>
-    <table>
-        <tr>
-            <th>Recipe Name</th>
-            <th>Recipe Description</th>
-            <th>Recipe Tag</th>
-            <th>Recipe Image</th>
-        </tr>
-        <tr th:each="recipe : ${recipeList}">
-            <td><a th:href="@{/recipes/} + ${recipe.id}" th:text="${recipe.name}">RecipeName</a></td>
-            <td th:text="${recipe.description}">Recipe Description</td>
-            <td th:text="${recipe.tag}">Recipe Tag</td>
-            <td th:text="${recipe.image}">Recipe Image</td>
-        </tr>
-    </table>
-</div>
+<body>
+    <nav role="navigation">
+        <ul class="list-group list-group-horizontal">
+            <li class="list-group-item"><a href="/">Home</a></li>
+            <li class="list-group-item"><a href="/users">Users</a></li>
+        </ul>
+    </nav>
+
+    <div th:each="entry : ${recipes}" th:with="recipeList=${entry.value}">
+        <p><strong th:text="${entry.key} + ': ' + ${recipeList.size()}"></strong></p>
+        <table>
+            <tr>
+                <th>Recipe Name</th>
+                <th>Recipe Description</th>
+                <th>Recipe Tag</th>
+                <th>Recipe Image</th>
+            </tr>
+            <tr th:each="recipe : ${recipeList}">
+                <td><a th:href="@{/recipes/} + ${recipe.id}" th:text="${recipe.name}">RecipeName</a></td>
+                <td th:text="${recipe.description}">Recipe Description</td>
+                <td th:text="${recipe.tag}">Recipe Tag</td>
+                <td th:text="${recipe.image}">Recipe Image</td>
+            </tr>
+        </table>
+    </div>
 </body>
+
 </html>

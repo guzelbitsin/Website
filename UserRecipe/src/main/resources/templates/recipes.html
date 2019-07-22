@@ -25,9 +25,11 @@ http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
             <th>Assign</th>
             <th>Update</th>
             <th>Delete</th>
+            <th>Share</th>
+
         </tr>
         <tr th:each="recipe : ${recipes}">
-                <td><a th:href="@{/recipes/} + ${recipe.id}" th:text="${recipe.name}">RecipeName</a></td>
+                <td><a id="link" th:href="@{/recipes/} + ${recipe.id}" th:text="${recipe.name}">RecipeName</a></td>
 
                 <td th:text="${recipe.description}">Recipe description will appear here</td>
                 <td id="tag" th:text="${recipe.tag}">Recipe tag will appear here</td>
@@ -52,6 +54,18 @@ http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
                     <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
             </td>
+            <td>
+                <form onsubmit="share()">
+                    <button class="btn btn-primary" type="submit">Share</button>
+                </form>
+            </td>
+
+    <script>
+        function share() {
+            var url = document.getElementById("link");
+            alert("This is your recipes url. You can share it!\n" + url);
+        }
+    </script>
 
 
 
