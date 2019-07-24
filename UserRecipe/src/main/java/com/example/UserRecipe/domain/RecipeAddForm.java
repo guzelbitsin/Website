@@ -5,13 +5,13 @@ import javax.validation.constraints.Size;
 
 public class RecipeAddForm {
 
-    @Size(min = 2, max = 20000)
+    @Size(min = 2, max = 250)
     private String recipeDesc;
-    @Size(min = 2, max = 20000)
+    @Size(min = 2, max = 250)
     private String recipeName;
-    @Size(min = 2, max = 20000)
+    @Size(min = 2, max = 250)
     private String recipeTag;
-    @Size(min = 2, max = 20000)
+    @Size(min = 2, max = 250)
     private String recipeImage;
 
     public String getRecipeDesc() {
